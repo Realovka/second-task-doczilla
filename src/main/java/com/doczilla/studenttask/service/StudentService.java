@@ -10,4 +10,6 @@ public interface StudentService {
     boolean create(StudentRequestDto student);
 
     List<StudentResponseDto> findAll();
+
+    boolean deleteById(long id);
 }

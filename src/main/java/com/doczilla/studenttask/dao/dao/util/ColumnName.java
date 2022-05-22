@@ -1,4 +1,4 @@
-package com.doczilla.studenttask.dao.dao.column;
+package com.doczilla.studenttask.dao.dao.util;
 
 public final class ColumnName {
 
