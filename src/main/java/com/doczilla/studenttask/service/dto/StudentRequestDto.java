@@ -1,6 +1,5 @@
 package com.doczilla.studenttask.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +15,6 @@ public class StudentRequestDto {
     private String firstName;
     private String lastName;
     private String surname;
-//    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
     private String group;
 }
