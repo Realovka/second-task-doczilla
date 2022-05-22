@@ -1,4 +1,4 @@
-package com.doczilla.studenttask.dao.entity;
+package com.doczilla.studenttask.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Student {
+public class StudentResponseDto {
     private long id;
     private String firstName;
     private String lastName;

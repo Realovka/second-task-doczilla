@@ -1,8 +1,13 @@
 package com.doczilla.studenttask.service;
 
-import com.doczilla.studenttask.dao.entity.Student;
+import com.doczilla.studenttask.service.dto.StudentRequestDto;
+import com.doczilla.studenttask.service.dto.StudentResponseDto;
+
+import java.util.List;
 
 public interface StudentService {
 
-    boolean create(Student student);
+    boolean create(StudentRequestDto student);
+
+    List<StudentResponseDto> findAll();
 }
