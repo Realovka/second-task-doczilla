@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StudentService {
 
-    boolean create(StudentRequestDto student);
+    long create(StudentRequestDto student);
 
     List<StudentResponseDto> findAll();
 

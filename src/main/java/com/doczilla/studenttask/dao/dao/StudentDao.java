@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface StudentDao {
 
-    boolean create(Student student);
+    long create(Student student);
 
     List<Student> findAll();
 
