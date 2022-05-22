@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,16 +36,21 @@ public class StudentDaoImpl implements StudentDao {
     private static final String DELETE_STUDENT = "DELETE FROM students WHERE id =?";
 
     @Override
-    public boolean create(Student student)  {
-        boolean result = false;
+    public long create(Student student)  {
+        long result = 0;
         try (Connection connection = HikariCPDataSource.getDataSource().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_STUDENT)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_STUDENT, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, student.getFirstName());
             preparedStatement.setString(2, student.getLastName());
             preparedStatement.setString(3, student.getSurname());
             preparedStatement.setDate(4, student.getBirthday());
             preparedStatement.setString(5, student.getGroup());
-            result = preparedStatement.execute();
+            preparedStatement.execute();
+            try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
         } catch (SQLException e) {
             log.error("SQLException when create student", e);
         }

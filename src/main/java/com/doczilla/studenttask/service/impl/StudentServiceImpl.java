@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
     private final Mapper mapper;
 
     @Override
-    public boolean create(StudentRequestDto student) {
+    public long create(StudentRequestDto student) {
         Student newStudent = mapper.toEntity(student);
         return studentDao.create(newStudent);
     }
